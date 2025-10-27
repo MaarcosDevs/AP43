@@ -604,13 +604,16 @@ $data = [
 ];
 
 $long = count($data);
-$sumaYes = 0;
-$sumaNone = 0;
+$suma = 0;
+$cereales = [];
 for ($i=0;$i<$long;$i++){
     if ($data[$i]["Favorites"] == "cereals"){
-    $sumaNone += 1;
+    $suma += 1;
+    $cereales [$i] = $data[$i]["Country"];
     }
-    echo "Countryes like cereals" . $sumaNone . "<br>";
 }
-echo "Total people who like cereals: " . $sumaNone . "<br>";
+echo "<br>Los cereales le gusta a $suma personas que son de : ";
+foreach ($cereales as $pais){
+    echo $pais . ", ";
+}
 ?>
