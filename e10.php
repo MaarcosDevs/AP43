@@ -606,12 +606,18 @@ $data = [
 $long = count($data);
 $suma = 0;
 $cereales = [];
-for ($i=0;$i<$long;$i++){
-    if ($data[$i]["Favorites"] == "cereals"){
-    $suma += 1;
-    $cereales [$i] = $data[$i]["Country"];
+
+for ($i = 0; $i < $long; $i++) {
+    $ejemplo = explode(",", $data[$i]["Favorites"]);
+    var_dump($ejemplo);
+    for ($j = 0; $j < count($ejemplo); $j++) {
+        if (trim($ejemplo[$j]) == "pasta") {
+            $suma++;
+            $cereales[] = $data[$i]["Country"];
+        }
     }
 }
+
 echo "<br>Los cereales le gusta a $suma personas que son de : ";
 foreach ($cereales as $pais){
     echo $pais . ", ";
